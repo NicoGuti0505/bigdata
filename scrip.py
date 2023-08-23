@@ -11,4 +11,3 @@ def es_primo(numero):
             return False
         i += 6
     return True
-
