@@ -60,6 +60,18 @@ jobs:
         run: |
           pytest
 
+      - name: Upload to S3
+        run: |
+          FILE_NAME=prueba_test.py
+          S3_BUCKET_NAME=yummi-shurima
+          pip install awscli
+          aws s3 cp $FILE_NAME s3://$S3_BUCKET_NAME/
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+          AWS_DEFAULT_REGION: us-east-1
+        
+
 
 
 
