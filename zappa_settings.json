@@ -1,0 +1,35 @@
+{
+    "dev": {
+        "app_function": "extraer.extraer" 
+        "aws_region": "us-east-1",
+        "profile_name": "default",
+        "project_name": "Parcial",
+        "runtime": "python3.10",
+        "s3_bucket": "parcialbg",
+	"keep_warm": false,
+	"role_name": "LabRole",
+        "manage_roles": false,
+        "apigateway_enabled": false
+}, 
+   "dev2": {
+        "app_function": "contenido.contenido"
+        "aws_region": "us-east-1",
+        "profile_name": "default",
+        "project_name": "ciclo",
+        "runtime": "python3.10",
+        "s3_bucket": "parcialbg"
+	"keep_warm": false,
+	"role_name": "LabRole",
+        "manage_roles": false,
+        "apigateway_enabled": false
+        "events": [{
+            "function": "contenido.contenido"
+            "event_source": {
+                "arn": "arn:aws:s3:::parcialbg",
+                "events": [
+                    "s3:ObjectCreated:*"
+                ]
+            }
+        }]
+    }  
+}
