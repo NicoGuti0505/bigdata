@@ -1,27 +1,29 @@
 {
     "dev": {
-        "app_function": "extraer.extraer" 
+        "app_function": "extraer.extraer",
         "aws_region": "us-east-1",
         "profile_name": "default",
-        "project_name": "Parcial",
+        "project_name": "bigdata",
         "runtime": "python3.10",
-        "s3_bucket": "parcialbg",
-	"keep_warm": false,
+	"s3_bucket": "parcialbg",
 	"role_name": "LabRole",
         "manage_roles": false,
-        "apigateway_enabled": false
+        "apigateway_enabled": false,
+	"events": [{
+           "function": "extraer.extraer",
+           "expression": "cron(00 09 * * ? *)"
+       }]
 }, 
    "dev2": {
         "app_function": "contenido.contenido"
         "aws_region": "us-east-1",
         "profile_name": "default",
-        "project_name": "ciclo",
+        "project_name": "bigdata",
         "runtime": "python3.10",
         "s3_bucket": "parcialbg"
-	"keep_warm": false,
 	"role_name": "LabRole",
         "manage_roles": false,
-        "apigateway_enabled": false
+        "apigateway_enabled": false,
         "events": [{
             "function": "contenido.contenido"
             "event_source": {
@@ -31,5 +33,5 @@
                 ]
             }
         }]
-    }  
+    }
 }
